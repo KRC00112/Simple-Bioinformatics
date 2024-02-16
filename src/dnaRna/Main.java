@@ -16,7 +16,7 @@ public class Main {
 		String rnaSeq=transcription(dnaSeq);
 		String proteinSeq=translation(rnaSeq);
 		String reverseComplement=reverseComplementOfDna(dnaSeq);
-		float gcContent=GcContentCalculation(dnaSeq);
+		float gcContent=gcContentCalculation(dnaSeq);
 
 		
 		
@@ -260,7 +260,7 @@ public class Main {
 		
 	}
 	
-	public static float GcContentCalculation(String dnaSeq) {
+	public static float gcContentCalculation(String dnaSeq) {
 		
 		int countG=0;
 		int countC=0;
