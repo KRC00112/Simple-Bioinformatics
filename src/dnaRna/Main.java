@@ -18,11 +18,7 @@ public class Main {
 		String reverseComplement=reverseComplementOfDna(dnaSeq);
 		float gcContent=gcContentCalculation(dnaSeq);
 
-		
-		
-		
-		
-		
+
 		System.out.println("The DNA Sequence: "+dnaSeq);
 		System.out.println("The length of the DNA Sequence: "+dnaSeq.length()+" Nucleotides");
 		System.out.println("The RNA Sequence: "+rnaSeq);
@@ -59,29 +55,29 @@ public class Main {
 		int remainder=0;
 		int rnaLength=rnaSeq.length();
 		
+		
+		
+		
+		if(rnaLength%3!=0) {
+			
+			remainder=rnaLength%3;
+			rnaLength=rnaLength-remainder;
+			
+			
+			
+		}
+		
+		
 			
 			for(int i=0;i<rnaLength;i+=3) {
-				
-				
-				if(rnaLength%3!=0) {
-					
-					remainder=rnaLength%3;
-					rnaLength=rnaLength-remainder;
-					
-					
-					
-				}
-				
+		
 				
 					
 					aminoAcid=rnaSeq.substring(i, j);
 					
 					
 					if(aminoAcid.equalsIgnoreCase("UUU")||aminoAcid.equalsIgnoreCase("UUC")) {
-					
-					
-					
-					
+
 						aminoAcid="Phenylalanine";
 						
 					}
