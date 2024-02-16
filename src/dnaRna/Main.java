@@ -9,21 +9,22 @@ public class Main {
 		
 		
 		Scanner scanner=new Scanner(System.in);
+		
 		System.out.print("Enter the DNA Sequence: ");
 		String dnaSeq=scanner.nextLine();
 		dnaSeq=dnaSeq.toUpperCase();
 		String rnaSeq=transcription(dnaSeq);
 		String proteinSeq=translation(rnaSeq);
 		String reverseComplement=reverseComplementOfDna(dnaSeq);
-		float gcContent=GcContentCalculator(dnaSeq);
+		float gcContent=GcContentCalculation(dnaSeq);
 
 		
 		
 		
 		
 		
-		
 		System.out.println("The DNA Sequence: "+dnaSeq);
+		System.out.println("The length of the DNA Sequence: "+dnaSeq.length()+" Nucleotides");
 		System.out.println("The RNA Sequence: "+rnaSeq);
 		System.out.println("The Protein Sequence: "+proteinSeq);
 		System.out.println("The Reverse Complement of the DNA Sequence: "+reverseComplement);
@@ -54,13 +55,23 @@ public class Main {
 		
 		String codon="";
 		int j=3;
-		
 		String aminoAcid="";
+		int remainder=0;
+		int rnaLength=rnaSeq.length();
 		
 			
-			for(int i=0;i<rnaSeq.length();i+=3) {
+			for(int i=0;i<rnaLength;i+=3) {
 				
-				if(rnaSeq.length()%3==0) {
+				
+				if(rnaLength%3!=0) {
+					
+					remainder=rnaLength%3;
+					rnaLength=rnaLength-remainder;
+					
+					
+					
+				}
+				
 				
 					
 					aminoAcid=rnaSeq.substring(i, j);
@@ -204,15 +215,7 @@ public class Main {
 					
 					j+=3;
 					
-						
-				}
-				
-				else {
-					codon="The length of the RNA Sequence must be in the multiples of 3. ";
-				}
-				
-				
-				
+	
 				
 				
 			}
@@ -257,7 +260,7 @@ public class Main {
 		
 	}
 	
-	public static float GcContentCalculator(String dnaSeq) {
+	public static float GcContentCalculation(String dnaSeq) {
 		
 		int countG=0;
 		int countC=0;
