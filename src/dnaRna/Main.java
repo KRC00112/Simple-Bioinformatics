@@ -169,13 +169,13 @@ public class Main {
 					}
 					if(aminoAcid.equalsIgnoreCase("GAU")||aminoAcid.equalsIgnoreCase("GAC")) {
 						
-						aminoAcid="Aspartic acid";
+						aminoAcid="Aspartic_acid";
 
 						
 					}
 					if(aminoAcid.equalsIgnoreCase("GAA")||aminoAcid.equalsIgnoreCase("GAG")) {
 						
-						aminoAcid="Glutamic acid";
+						aminoAcid="Glutamic_acid";
 
 						
 					}
