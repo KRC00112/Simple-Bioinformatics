@@ -19,7 +19,7 @@ public class Main {
 		System.out.println("The RNA Sequence                          : "+rnaSeq);
 		System.out.println("The Protein Sequence                      : "+proteinSeq);
 		System.out.println("The Reverse Complement of the DNA Sequence: "+reverseComplement);
-		System.out.println("The GC-Content of the DNA Sequence        : "+gcContent+"%");
+		System.out.println("The GC-Content ofhhhh the DNA Sequence        : "+gcContent+"%");
 	}
 	
 	
