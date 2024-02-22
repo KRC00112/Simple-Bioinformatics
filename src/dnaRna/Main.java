@@ -6,10 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		
 		Scanner scanner=new Scanner(System.in);
-		
 		System.out.print("Enter the DNA Sequence: ");
 		String dnaSeq=scanner.nextLine();
 		dnaSeq=dnaSeq.toUpperCase();
@@ -17,34 +14,18 @@ public class Main {
 		String proteinSeq=translation(rnaSeq);
 		String reverseComplement=reverseComplementOfDna(dnaSeq);
 		float gcContent=gcContentCalculation(dnaSeq);
-
-
-		System.out.println("The DNA Sequence: "+dnaSeq);
-		System.out.println("The length of the DNA Sequence: "+dnaSeq.length()+" Nucleotides");
-		System.out.println("The RNA Sequence: "+rnaSeq);
-		System.out.println("The Protein Sequence: "+proteinSeq);
+		System.out.println("The DNA Sequence                          : "+dnaSeq);
+		System.out.println("The length of the DNA Sequence            : "+dnaSeq.length()+" Nucleotides");
+		System.out.println("The RNA Sequence                          : "+rnaSeq);
+		System.out.println("The Protein Sequence                      : "+proteinSeq);
 		System.out.println("The Reverse Complement of the DNA Sequence: "+reverseComplement);
-		System.out.println("The GC-Content of the DNA Sequence: "+gcContent+"%");
-
-
-
-		
-
+		System.out.println("The GC-Content of the DNA Sequence        : "+gcContent+"%");
 	}
 	
 	
 	public static String transcription(String dnaSeq) {
-		
-		
 		String rnaSeq=dnaSeq.replace('T', 'U');
-		
-		
-		
-		return rnaSeq;
-		
-		
-		
-		
+		return rnaSeq;	
 	}
 	
 	public static String translation(String rnaSeq) {
@@ -54,158 +35,140 @@ public class Main {
 		String aminoAcid="";
 		int remainder=0;
 		int rnaLength=rnaSeq.length();
-		
-		
-		
-		
+
 		if(rnaLength%3!=0) {
 			
 			remainder=rnaLength%3;
 			rnaLength=rnaLength-remainder;
-			
-			
-			
+
 		}
-		
-		
-			
-			for(int i=0;i<rnaLength;i+=3) {
+	
+		for(int i=0;i<rnaLength;i+=3) {
 		
 				
 					
-					aminoAcid=rnaSeq.substring(i, j);
+					codon=rnaSeq.substring(i, j);
 					
 					
-					if(aminoAcid.equalsIgnoreCase("UUU")||aminoAcid.equalsIgnoreCase("UUC")) {
+					if(codon.equalsIgnoreCase("UUU")||codon.equalsIgnoreCase("UUC")) {
 
-						aminoAcid="Phenylalanine";
-						
-					}
-					
-					if(aminoAcid.equalsIgnoreCase("UUA")||aminoAcid.equalsIgnoreCase("UUG")||aminoAcid.equalsIgnoreCase("CUU")||aminoAcid.equalsIgnoreCase("CUC")||aminoAcid.equalsIgnoreCase("CUA")||aminoAcid.equalsIgnoreCase("CUG")) {
-						
-						
-						aminoAcid="Leucine";
+						codon="Phenylalanine";
 						
 					}
 					
-					if(aminoAcid.equalsIgnoreCase("AUU")||aminoAcid.equalsIgnoreCase("AUC")||aminoAcid.equalsIgnoreCase("AUA")) {
+					if(codon.equalsIgnoreCase("UUA")||codon.equalsIgnoreCase("UUG")||codon.equalsIgnoreCase("CUU")||codon.equalsIgnoreCase("CUC")||codon.equalsIgnoreCase("CUA")||codon.equalsIgnoreCase("CUG")) {
 						
-						aminoAcid="Isoleucine";
+						codon="Leucine";
+					}
+					
+					if(codon.equalsIgnoreCase("AUU")||codon.equalsIgnoreCase("AUC")||codon.equalsIgnoreCase("AUA")) {
+						
+						codon="Isoleucine";
+						
+					}
+					if(codon.equalsIgnoreCase("AUG")) {
+						
+						codon="Methionine";
+						
+					}
+					if(codon.equalsIgnoreCase("GUU")||codon.equalsIgnoreCase("GUC")||codon.equalsIgnoreCase("GUA")||codon.equalsIgnoreCase("GUG")) {
+						
+						codon="Valine";
+						
+					}
+					if(codon.equalsIgnoreCase("UCU")||codon.equalsIgnoreCase("UCC")||codon.equalsIgnoreCase("UCA")||codon.equalsIgnoreCase("UCG")||codon.equalsIgnoreCase("AGU")||codon.equalsIgnoreCase("AGC")) {
+						
+						codon="Serine";
+						
+					}
+					if(codon.equalsIgnoreCase("CCU")||codon.equalsIgnoreCase("CCC")||codon.equalsIgnoreCase("CCA")||codon.equalsIgnoreCase("CCG")) {
+						
+						codon="Proline";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("AUG")) {
+					if(codon.equalsIgnoreCase("ACU")||codon.equalsIgnoreCase("ACC")||codon.equalsIgnoreCase("ACA")||codon.equalsIgnoreCase("ACG")) {
 						
-						aminoAcid="Methionine";
+						codon="Threonine";
+						
+					}
+					if(codon.equalsIgnoreCase("GCU")||codon.equalsIgnoreCase("GCC")||codon.equalsIgnoreCase("GCA")||codon.equalsIgnoreCase("GCG")) {
+						
+						codon="Alanine";
+
+					}
+					if(codon.equalsIgnoreCase("UAU")||codon.equalsIgnoreCase("UAC")) {
+						
+						codon="Tyrosine";
+
+					}
+					if(codon.equalsIgnoreCase("UAA")||codon.equalsIgnoreCase("UAG")||codon.equalsIgnoreCase("UGA")) {
+						
+						codon="*";	
+					}
+					if(codon.equalsIgnoreCase("CAU")||codon.equalsIgnoreCase("CAC")) {
+						
+						codon="Histidine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("GUU")||aminoAcid.equalsIgnoreCase("GUC")||aminoAcid.equalsIgnoreCase("GUA")||aminoAcid.equalsIgnoreCase("GUG")) {
+					if(codon.equalsIgnoreCase("CAA")||codon.equalsIgnoreCase("CAG")) {
 						
-						aminoAcid="Valine";
+						codon="Glutamine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("UCU")||aminoAcid.equalsIgnoreCase("UCC")||aminoAcid.equalsIgnoreCase("UCA")||aminoAcid.equalsIgnoreCase("UCG")||aminoAcid.equalsIgnoreCase("AGU")||aminoAcid.equalsIgnoreCase("AGC")) {
+					if(codon.equalsIgnoreCase("AAU")||codon.equalsIgnoreCase("AAC")) {
 						
-						aminoAcid="Serine";
+						codon="Asparagine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("CCU")||aminoAcid.equalsIgnoreCase("CCC")||aminoAcid.equalsIgnoreCase("CCA")||aminoAcid.equalsIgnoreCase("CCG")) {
+					if(codon.equalsIgnoreCase("AAA")||codon.equalsIgnoreCase("AAG")) {
 						
-						aminoAcid="Proline";
+						codon="Lysine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("ACU")||aminoAcid.equalsIgnoreCase("ACC")||aminoAcid.equalsIgnoreCase("ACA")||aminoAcid.equalsIgnoreCase("ACG")) {
+					if(codon.equalsIgnoreCase("GAU")||codon.equalsIgnoreCase("GAC")) {
 						
-						aminoAcid="Threonine";
+						codon="Aspartic_acid";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("GCU")||aminoAcid.equalsIgnoreCase("GCC")||aminoAcid.equalsIgnoreCase("GCA")||aminoAcid.equalsIgnoreCase("GCG")) {
+					if(codon.equalsIgnoreCase("GAA")||codon.equalsIgnoreCase("GAG")) {
 						
-						aminoAcid="Alanine";
+						codon="Glutamic_acid";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("UAU")||aminoAcid.equalsIgnoreCase("UAC")) {
+					if(codon.equalsIgnoreCase("UGU")||codon.equalsIgnoreCase("UGC")) {
 						
-						aminoAcid="Tyrosine";
+						codon="Cysteine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("UAA")||aminoAcid.equalsIgnoreCase("UAG")||aminoAcid.equalsIgnoreCase("UGA")) {
+					if(codon.equalsIgnoreCase("UGG")) {
 						
-						aminoAcid="*";
+						codon="Tryptophan";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("CAU")||aminoAcid.equalsIgnoreCase("CAC")) {
+					if(codon.equalsIgnoreCase("CGU")||codon.equalsIgnoreCase("CGC")||codon.equalsIgnoreCase("CGA")||codon.equalsIgnoreCase("CGG")||codon.equalsIgnoreCase("AGA")||codon.equalsIgnoreCase("AGG")) {
 						
-						aminoAcid="Histidine";
+						codon="Arginine";
 
 						
 					}
-					if(aminoAcid.equalsIgnoreCase("CAA")||aminoAcid.equalsIgnoreCase("CAG")) {
+					if(codon.equalsIgnoreCase("GGU")||codon.equalsIgnoreCase("GGC")||codon.equalsIgnoreCase("GGA")||codon.equalsIgnoreCase("GGG")) {
 						
-						aminoAcid="Glutamine";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("AAU")||aminoAcid.equalsIgnoreCase("AAC")) {
-						
-						aminoAcid="Asparagine";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("AAA")||aminoAcid.equalsIgnoreCase("AAG")) {
-						
-						aminoAcid="Lysine";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("GAU")||aminoAcid.equalsIgnoreCase("GAC")) {
-						
-						aminoAcid="Aspartic_acid";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("GAA")||aminoAcid.equalsIgnoreCase("GAG")) {
-						
-						aminoAcid="Glutamic_acid";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("UGU")||aminoAcid.equalsIgnoreCase("UGC")) {
-						
-						aminoAcid="Cysteine";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("UGG")) {
-						
-						aminoAcid="Tryptophan";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("CGU")||aminoAcid.equalsIgnoreCase("CGC")||aminoAcid.equalsIgnoreCase("CGA")||aminoAcid.equalsIgnoreCase("CGG")||aminoAcid.equalsIgnoreCase("AGA")||aminoAcid.equalsIgnoreCase("AGG")) {
-						
-						aminoAcid="Arginine";
-
-						
-					}
-					if(aminoAcid.equalsIgnoreCase("GGU")||aminoAcid.equalsIgnoreCase("GGC")||aminoAcid.equalsIgnoreCase("GGA")||aminoAcid.equalsIgnoreCase("GGG")) {
-						
-						aminoAcid="Glycine";
+						codon="Glycine";
 
 						
 					}
 					
 					
-					codon=codon+aminoAcid+" ";
+					aminoAcid=aminoAcid+codon+" ";
 
 					
 					
@@ -216,7 +179,7 @@ public class Main {
 				
 			}
 
-		return codon;
+		return aminoAcid;
 	
 	}
 	public static String reverseComplementOfDna(String dnaSeq) {
