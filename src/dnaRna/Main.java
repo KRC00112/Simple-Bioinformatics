@@ -39,44 +39,59 @@ public class Main {
 		
 		
 		
+		
 			
 		
 		   String[] dict=seq.split("");
 
 
 	        HashSet<String> hs=new HashSet<String>();
-
-
-	        int count=0;
-
-	        String word="";
-
-	        for(int j=0;j<dict.length;j++) {
-
-	            word=dict[j];
-
-
-	            for (int i = 0; i < dict.length; i++) {
-
-	                if (dict[i].equalsIgnoreCase(word)) {
-
-	                    count++;
-
-	                }
-
-
-	            }
-
-//	            System.out.println(word+":"+countk);
-	            hs.add(word+": "+count);
-	            count=0;
-
-
-	        }
 	        
-	        
-	        		
-		return hs;
+
+			
+			if(seq.isEmpty()) {
+				
+				
+				hs.add("empty");
+				
+				return hs;
+				
+				
+			}
+
+			else {
+		        int count=0;
+	
+		        String word="";
+	
+		        for(int j=0;j<dict.length;j++) {
+	
+		            word=dict[j];
+	
+	
+		            for (int i = 0; i < dict.length; i++) {
+	
+		                if (dict[i].equalsIgnoreCase(word)) {
+	
+		                    count++;
+	
+		                }
+	
+	
+		            }
+	
+	//	            System.out.println(word+":"+countk);
+		            hs.add(word+": "+count);
+		            count=0;
+	
+	
+		        }
+		        
+		        
+		        		
+			return hs;
+		
+			}
 		
 
     }
@@ -223,46 +238,61 @@ public class Main {
 
 
         HashSet<String> hs=new HashSet<String>();
+        
+        if(stringCodons.isEmpty()) {
+			
+			
+			hs.add("empty");
+			
+			return hs;
+			
+			
+		}
+        
+        
+        else {
 
 
-        int count=0;
-
-        String word="";
-
-        for(int j=0;j<dict.length;j++) {
-
-            word=dict[j];
-
-
-            for (int i = 0; i < dict.length; i++) {
-
-                if (dict[i].equalsIgnoreCase(word)) {
-
-                    count++;
-
-                }
-
-
-            }
-
-//            System.out.println(word+":"+countk);
-            hs.add(word+": "+count);
-            count=0;
-
-
-        }
-
-
-
-//        for(String i: hs){
-//
-//            System.out.println(i);
-//
-//
-//
-//        }		
+	        int count=0;
+	
+	        String word="";
+	
+	        for(int j=0;j<dict.length;j++) {
+	
+	            word=dict[j];
+	
+	
+	            for (int i = 0; i < dict.length; i++) {
+	
+	                if (dict[i].equalsIgnoreCase(word)) {
+	
+	                    count++;
+	
+	                }
+	
+	
+	            }
+	
+	//            System.out.println(word+":"+countk);
+	            hs.add(word+": "+count);
+	            count=0;
+	
+	
+	        }
+	
+	
+	
+	//        for(String i: hs){
+	//
+	//            System.out.println(i);
+	//
+	//
+	//
+	//        }		
+			
+			return hs;
 		
-		return hs;
+        }
 		
 		
 		
