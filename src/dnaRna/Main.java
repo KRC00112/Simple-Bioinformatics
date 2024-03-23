@@ -6,49 +6,73 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
-
+	
+	
+	
 	public static void main(String[] args) {
+		
+		long start = System.currentTimeMillis();
+        runApplication();
+        long end = System.currentTimeMillis();
+        System.out.println("\n\nTotal Runtime: "+(end - start) + " ms");
+		
+		
+		
+	}
+	
+
+	public static void runApplication() {
 		// TODO Auto-generated method stub
+		
+		
 		Scanner scanner=new Scanner(System.in);
 		System.out.print("Enter the DNA Sequence: ");
 		String dnaSeq=scanner.nextLine();
-		dnaSeq=dnaSeq.replace(" ", "");
-		dnaSeq=dnaSeq.toUpperCase();
 		
-		ArrayList codonList=codons(dnaSeq);
-		String rnaSeq=transcription(dnaSeq);
-		String proteinSeq=translation(rnaSeq);
-		String reverseComplement=reverseComplementOfDna(dnaSeq);
-		float gcContent=gcContentCalculation(dnaSeq);
-		System.out.println("The DNA Sequence                                : "+dnaSeq);
-		System.out.println("The length of the DNA Sequence                  : "+dnaSeq.length()+" Nucleotides");
-		System.out.println("The Nucleotide Density of the DNA Sequence      : "+nucleotideDensity(dnaSeq));
-		System.out.println("Codons That can be formed from the DNA Sequence : "+codonList+"["+codonList.size()+"]");
-		System.out.println("The Codon Density of the DNA Sequence           : "+codonDensity(codonList));
-		System.out.println("The Reverse Complement of the DNA Sequence      : "+reverseComplement);
-		System.out.println("The GC-Content of the DNA Sequence              : "+gcContent+"%");
-		System.out.println("The RNA Sequence                                : "+rnaSeq);
-//		System.out.println("The Nucleotide Density of the RNA Sequence      : "+nucleotideDensity(rnaSeq));
-		System.out.println("The Protein Sequence                            : "+proteinSeq);
-		System.out.println("The Amino Acid Density of the Protein Sequence  : "+aminoAcidDensity(proteinSeq));
+		if(!dnaSeq.matches("[atgc]+")) {
+			
+			
+			System.out.println("Enter a valid DNA Sequence");
+			
+		}
+		
+		
+		
+	
+		else {	
+		
+		
+			dnaSeq=dnaSeq.replace(" ", "");
+			dnaSeq=dnaSeq.toUpperCase();
+			ArrayList codonList=codons(dnaSeq);
+			String rnaSeq=transcription(dnaSeq);
+			String proteinSeq=translation(rnaSeq);
+			String reverseComplement=reverseComplementOfDna(dnaSeq);
+			float gcContent=gcContentCalculation(dnaSeq);
+			System.out.println("The DNA Sequence                                : "+dnaSeq);
+			System.out.println("The length of the DNA Sequence                  : "+dnaSeq.length()+" Nucleotides");
+			System.out.println("The Nucleotide Density of the DNA Sequence      : "+nucleotideDensity(dnaSeq));
+			System.out.println("Codons That can be formed from the DNA Sequence : "+codonList+"["+codonList.size()+"]");
+			System.out.println("The Codon Density of the DNA Sequence           : "+codonDensity(codonList));
+			System.out.println("The Reverse Complement of the DNA Sequence      : "+reverseComplement);
+			System.out.println("The GC-Content of the DNA Sequence              : "+gcContent+"%");
+			System.out.println("The RNA Sequence                                : "+rnaSeq);
+	//		System.out.println("The Nucleotide Density of the RNA Sequence      : "+nucleotideDensity(rnaSeq));
+			System.out.println("The Protein Sequence                            : "+proteinSeq);
+			System.out.println("The Amino Acid Density of the Protein Sequence  : "+aminoAcidDensity(proteinSeq));
+		
+		
+		}
 
 	}
 	
 	
 	public static HashSet aminoAcidDensity(String seq) {
 		
-		
-		
-		
-			
-		
+
 		   String[] dict=seq.split("");
-
-
 	        HashSet<String> hs=new HashSet<String>();
-	        
-
-			
+	
 			if(seq.isEmpty()) {
 				
 				
@@ -568,5 +592,7 @@ public class Main {
 		return gcContent;
 	}
 	
+	
+
 
 }
