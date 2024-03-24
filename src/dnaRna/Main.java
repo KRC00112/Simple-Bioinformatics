@@ -51,15 +51,15 @@ public class Main {
 			float gcContent=gcContentCalculation(dnaSeq);
 			System.out.println("The DNA Sequence                                : "+dnaSeq);
 			System.out.println("The length of the DNA Sequence                  : "+dnaSeq.length()+" Nucleotides");
-			System.out.println("The Nucleotide Density of the DNA Sequence      : "+nucleotideDensity(dnaSeq));
+			System.out.println("The Nucleotide Frequency of the DNA Sequence      : "+nucleotideFrequency(dnaSeq));
 			System.out.println("Codons That can be formed from the DNA Sequence : "+codonList+"["+codonList.size()+"]");
-			System.out.println("The Codon Density of the DNA Sequence           : "+codonDensity(codonList));
+			System.out.println("The Codon Frequency of the DNA Sequence           : "+codonFrequency(codonList));
 			System.out.println("The Reverse Complement of the DNA Sequence      : "+reverseComplement);
 			System.out.println("The GC-Content of the DNA Sequence              : "+gcContent+"%");
 			System.out.println("The RNA Sequence                                : "+rnaSeq);
-	//		System.out.println("The Nucleotide Density of the RNA Sequence      : "+nucleotideDensity(rnaSeq));
+	//		System.out.println("The Nucleotide Frequency of the RNA Sequence      : "+nucleotideFrequency(rnaSeq));
 			System.out.println("The Protein Sequence                            : "+proteinSeq);
-			System.out.println("The Amino Acid Density of the Protein Sequence  : "+aminoAcidDensity(proteinSeq));
+			System.out.println("The Amino Acid Frequency of the Protein Sequence  : "+aminoAcidFrequency(proteinSeq));
 		
 		
 		}
@@ -67,7 +67,7 @@ public class Main {
 	}
 	
 	
-	public static HashSet aminoAcidDensity(String seq) {
+	public static HashSet aminoAcidFrequency(String seq) {
 		
 
 		   String[] dict=seq.split("");
@@ -165,7 +165,7 @@ public class Main {
 	
 	
 	
-	public static LinkedList nucleotideDensity(String seq) {
+	public static LinkedList nucleotideFrequency(String seq) {
 		
 		
 		
@@ -236,7 +236,7 @@ public class Main {
 	
 	
 	
-	public static HashSet codonDensity(ArrayList codonList) {
+	public static HashSet codonFrequency(ArrayList codonList) {
 		
 		
 		
@@ -262,6 +262,7 @@ public class Main {
 
 
         HashSet<String> hs=new HashSet<String>();
+        
         
         if(stringCodons.isEmpty()) {
 			
