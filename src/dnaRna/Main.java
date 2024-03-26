@@ -29,7 +29,7 @@ public class Main {
 		System.out.print("Enter the DNA Sequence: ");
 		String dnaSeq=scanner.nextLine();
 		
-		if(!dnaSeq.matches("[atgc]+")) {
+		if(!dnaSeq.matches("[atgc\s]+")) {
 			
 			
 			System.out.println("Enter a valid DNA Sequence");
