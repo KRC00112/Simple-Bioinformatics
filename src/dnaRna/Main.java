@@ -152,7 +152,8 @@ public class Main {
 			
 			symbol="C";
 			
-//		}
+		}
+
 //		if(scompare==coilCount&&scompare==betaCount&&scompare==alphaCount) {
 //			
 //			symbol="X";
