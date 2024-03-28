@@ -1,6 +1,7 @@
 package dnaRna;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -29,7 +30,7 @@ public class Main {
 		System.out.print("Enter the DNA Sequence: ");
 		String dnaSeq=scanner.nextLine();
 		
-		if(!dnaSeq.matches("[atgc\s]+")) {
+		if(!dnaSeq.matches("[atgcATGC\s]+")) {
 			
 			
 			System.out.println("Enter a valid DNA Sequence");
@@ -49,6 +50,8 @@ public class Main {
 			String proteinSeq=translation(rnaSeq);
 			String reverseComplement=reverseComplementOfDna(dnaSeq);
 			float gcContent=gcContentCalculation(dnaSeq);
+			String secondaryStructureAnalysis=secondaryStructureAffinity(proteinSeq);
+			
 			System.out.println("The DNA Sequence                                 : "+dnaSeq);
 			System.out.println("The length of the DNA Sequence                   : "+dnaSeq.length()+" Nucleotides");
 			System.out.println("The Nucleotide Frequency of the DNA Sequence     : "+nucleotideFrequency(dnaSeq));
@@ -60,11 +63,110 @@ public class Main {
 	//		System.out.println("The Nucleotide Frequency of the RNA Sequence     : "+nucleotideFrequency(rnaSeq));
 			System.out.println("The Protein Sequence                             : "+proteinSeq);
 			System.out.println("The Amino Acid Frequency of the Protein Sequence : "+aminoAcidFrequency(proteinSeq));
+			System.out.println("The Analysis of the Protein Secondary Structure  : "+secondaryStructureAnalysis);
+			
+			
+			
+			
+			
 		
 		
 		}
 
 	}
+	
+	
+	public static String secondaryStructureAffinity(String proteinSeq) {
+		
+		
+		
+		
+		int alphaCount=0;
+		int betaCount=0;
+		int coilCount=0;
+		
+		for(int i=0;i<proteinSeq.length();i++) {
+			
+			if(proteinSeq.charAt(i)=='A'||proteinSeq.charAt(i)=='R'||proteinSeq.charAt(i)=='D'||proteinSeq.charAt(i)=='Q'||proteinSeq.charAt(i)=='E'||proteinSeq.charAt(i)=='G'
+					||proteinSeq.charAt(i)=='I'||proteinSeq.charAt(i)=='L'||proteinSeq.charAt(i)=='K'||proteinSeq.charAt(i)=='M'||proteinSeq.charAt(i)=='F'||proteinSeq.charAt(i)=='P'
+					||proteinSeq.charAt(i)=='W'||proteinSeq.charAt(i)=='V') {
+				
+				alphaCount++;
+				
+				
+				
+			}
+			if(proteinSeq.charAt(i)=='N'||proteinSeq.charAt(i)=='C'||proteinSeq.charAt(i)=='Y') {
+				
+				
+				betaCount++;
+				
+				
+				
+			}
+			if(proteinSeq.charAt(i)=='H'||proteinSeq.charAt(i)=='S'||proteinSeq.charAt(i)=='T') {
+				
+				
+				coilCount++;
+				
+				
+				
+			}
+			if(proteinSeq.charAt(i)=='*') {
+				
+				
+				coilCount+=0;
+				betaCount+=0;
+				alphaCount+=0;
+
+
+
+				
+			}
+
+		}
+	String counts=betaCount+" "+alphaCount+" "+coilCount;
+		
+		String[] countArray= {"\u03B1: "+alphaCount,"\u03B2: "+betaCount,"C: "+coilCount};
+		String stringArray=Arrays.toString(countArray);
+		
+		
+		
+		
+		int fCompare=Math.max(alphaCount, betaCount);
+		int scompare=Math.max(fCompare,coilCount);
+		
+		String symbol=" ";
+		
+		if(scompare==betaCount) {
+			
+			symbol="\u03B2";
+			
+		}
+		if(scompare==alphaCount) {
+			
+			symbol="\u03B1";
+			
+		}
+		if(scompare==coilCount) {
+			
+			symbol="C";
+			
+//		}
+//		if(scompare==coilCount&&scompare==betaCount&&scompare==alphaCount) {
+//			
+//			symbol="X";
+//			
+//		}
+
+		
+		
+		
+		
+		return stringArray+"[Max: "+scompare+"][Has affinity towards ("+symbol+") secondary structure]";
+    }
+	
+	
 	
 	
 	public static HashSet aminoAcidFrequency(String seq) {
